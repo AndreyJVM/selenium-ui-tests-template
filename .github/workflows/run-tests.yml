@@ -1,0 +1,29 @@
+name: Selenium UI Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Run UI Tests on Remote Grid
+      env:
+        GRID_USER: ${{ secrets.GRID_USER }}
+        GRID_PASS: ${{ secrets.GRID_PASS }}
+        GRID_DOMAIN: ${{ secrets.GRID_DOMAIN }}
+      run: mvn test -DRUN_ON_GRID=true
