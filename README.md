@@ -29,14 +29,6 @@ export GRID_DOMAIN="selenium.your-domain.com"
 mvn test -DRUN_ON_GRID=true
 ```
 
-**Windows (PowerShell):**
-```powershell
-$env:GRID_USER="admin"
-$env:GRID_PASS="your-secure-password"
-$env:GRID_DOMAIN="selenium.your-domain.com"
-mvn test -DRUN_ON_GRID=true
-```
-
 ## GitHub Actions CI/CD
 
 This project includes a ready-to-use GitHub Actions workflow (`.github/workflows/run-tests.yml`). 
